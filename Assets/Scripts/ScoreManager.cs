@@ -29,16 +29,30 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         highScore = PlayerPrefs.GetFloat("highScore", 0); // Fetches the PlayerPref "highScore", if it doesn't exist, create it and set with value of 0.
+        StartCoroutine(ScorePerSecond());
     }
+
+    IEnumerator ScorePerSecond()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1.0f);
+
+            UpdateScore(incrementValue);
+        }
+    }
+
+    private void UpdateScore(float score)
+    {
+        currentScore += score;
+        scoreText.text = "Score: " + currentScore.ToString("F0");
+    }
+
     private void Update()
     {
-        if (!gameOver) // If player is currently playing game, increment the currentScore per second.
+        if (gameOver) // If player is currently playing game, increment the currentScore per second.
         {
-            currentScore += Time.deltaTime * incrementValue; // Increments score per second, by incrementValue.
-            scoreText.text = "Score: " + currentScore.ToString("F0"); // Changes the scoreText to the current score, with no decimal places.
-        }
-        else // If the game is over, pause the current score and set current score to total. Then compare the total with the current high score.
-        {
+            StopAllCoroutines();
             totalScore = currentScore; // This is the final score at the end of the game.
             SaveScore(); // This compares the totalScore with the highScore, to set new highscores.
         }
@@ -47,7 +61,7 @@ public class ScoreManager : MonoBehaviour
     // This function adds to the current score, by the fortuneValue. This is called from [scriptname.cs] when the player touches the Fortune. 
     public void FortuneScore()
     {
-        currentScore += fortuneValue;
+        UpdateScore(fortuneValue);
     }
 
     // This compares the totalScore with the current high score.
