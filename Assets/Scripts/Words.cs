@@ -43,27 +43,27 @@ public class Words : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.A)) //Changes the words when the player presses the A Key (Will be removed)
         {
-            fortuneText.SetText(GetRandomAdjective() + " " + GetRandomVerb() + " " + GetRandomNouns());
+            fortuneText.SetText(GetRandomAdjective() + " " + GetRandomVerb() + " " + GetRandomNouns()); //printing the chosen words onto the canvas including spaces
         }
     }
     
-    private string GetRandomAdjective()
+    private string GetRandomAdjective() //Gets a random adjective from the list
     {
         var randomIndex = UnityEngine.Random.Range(0, Adjectives.Count);
 
         return Adjectives[randomIndex];
     }
 
-    private string GetRandomVerb()
+    private string GetRandomVerb() //Gets a random verb from the list
     {
-        var randomIndex = UnityEngine.Random.Range(0, TransistiveVerbs.Count);
+        var randomIndex = UnityEngine.Random.Range(0, TransistiveVerbs.Count); //Generates a random verb between 0 and the max amount of verbs in the text file
 
-        return TransistiveVerbs[randomIndex];
+        return TransistiveVerbs[randomIndex]; //Prints the random verb
     }
 
-    private string GetRandomNouns()
+    private string GetRandomNouns() //Gets a new noun from the list
     {
         var randomIndex = UnityEngine.Random.Range(0, Nouns.Count);
 
