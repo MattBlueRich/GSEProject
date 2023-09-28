@@ -19,7 +19,7 @@ public class Words : MonoBehaviour
 
     private void Awake()
     {
-        LoadStrings();
+        LoadStrings(); //Creating a load string variable
     }
 
     void LoadStrings()
