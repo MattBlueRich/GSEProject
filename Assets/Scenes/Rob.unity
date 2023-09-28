@@ -177,6 +177,7 @@ MonoBehaviour:
   Nouns: []
   TransistiveVerbs: []
   textFile: {fileID: 0}
+  fortuneText: {fileID: 1186209479}
 --- !u!114 &1186209479
 MonoBehaviour:
   m_ObjectHideFlags: 0
