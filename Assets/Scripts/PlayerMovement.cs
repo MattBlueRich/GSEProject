@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Space))
         {
             keyPressed = false;
-            Debug.Log(keyPressed);
         }
 
         if(keyPressed == false)
