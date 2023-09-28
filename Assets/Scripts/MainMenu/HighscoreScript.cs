@@ -10,7 +10,7 @@ public class HighscoreScript : MonoBehaviour
 
     private void Start()
     {
-        highscore = PlayerPrefs.GetInt("highScore", 0);
+        highscore = PlayerPrefs.GetFloat("highScore", 0);
         highscoreText.text = "Highscore: " + highscore.ToString("F0");
     }
 }

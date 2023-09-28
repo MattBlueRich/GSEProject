@@ -42,13 +42,6 @@ public class ScoreManager : MonoBehaviour
             totalScore = currentScore; // This is the final score at the end of the game.
             SaveScore(); // This compares the totalScore with the highScore, to set new highscores.
         }
-
-        //-- DEBUG PLEASE REMOVE: When space is pressed, cue game over! --//
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            gameOver = true;
-        }
     }
 
     // This function adds to the current score, by the fortuneValue. This is called from [scriptname.cs] when the player touches the Fortune. 
