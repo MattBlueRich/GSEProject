@@ -39,4 +39,15 @@ public class Words : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        GetRandomLine();
+    }
+    
+    private string GetRandomLine()
+    {
+        var randomIndex = UnityEngine.Random.Range(0, Adjectives.Count);
+
+        return Adjectives[randomIndex];
+    }
 }
