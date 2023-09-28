@@ -43,16 +43,31 @@ public class Words : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.A))
         {
-            fortuneText.SetText(GetRandomLine());
+            fortuneText.SetText(GetRandomAdjective() + " " + GetRandomVerb() + " " + GetRandomNouns());
         }
     }
     
-    private string GetRandomLine()
+    private string GetRandomAdjective()
     {
         var randomIndex = UnityEngine.Random.Range(0, Adjectives.Count);
 
         return Adjectives[randomIndex];
     }
+
+    private string GetRandomVerb()
+    {
+        var randomIndex = UnityEngine.Random.Range(0, TransistiveVerbs.Count);
+
+        return TransistiveVerbs[randomIndex];
+    }
+
+    private string GetRandomNouns()
+    {
+        var randomIndex = UnityEngine.Random.Range(0, Nouns.Count);
+
+        return Nouns[randomIndex];
+    }
+
 }
