@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+using TMPro;
 
 public class Words : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Words : MonoBehaviour
     public List<string> Nouns;
     public List<string> TransistiveVerbs;
     public TextAsset textFile;
+    public TMP_Text fortuneText;
     // figure out how to get the max value of an array
     // Google Unity Random Random.range
     // learn how to define the size of an array
@@ -39,4 +41,18 @@ public class Words : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.A))
+        {
+            fortuneText.SetText(GetRandomLine());
+        }
+    }
+    
+    private string GetRandomLine()
+    {
+        var randomIndex = UnityEngine.Random.Range(0, Adjectives.Count);
+
+        return Adjectives[randomIndex];
+    }
 }
