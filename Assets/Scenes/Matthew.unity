@@ -232,8 +232,9 @@ MonoBehaviour:
   incrementValue: 1
   currentScore: 0
   totalScore: 0
-  highScore: 0
+  highScore: 3
   scoreText: {fileID: 1207629668}
+  gameOver: 0
 --- !u!4 &845210658
 Transform:
   m_ObjectHideFlags: 0
