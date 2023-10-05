@@ -4,8 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - DestroyObject
   - Illusion
+=======
+>>>>>>> f06443a18aca7d14ba415d5cafd24b27f141c732
   - Fortune
   layers:
   - Default
