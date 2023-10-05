@@ -12,6 +12,12 @@ public class CircleCollision : MonoBehaviour
             scoreManager.FortuneScore();
             Debug.Log("FortuneTriggerFuckery");
         }
+
+        if (collision.gameObject.CompareTag("Illusion"))
+        {
+            //Endgame
+            Debug.Log("IllusionTriggerFuckery");
+        }
     }
     
     // Start is called before the first frame update
