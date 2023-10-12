@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float moveSpeed;
+    public float moveSpeed, lerpSpeed;
 
     [SerializeField]
-    float defaultRadius, maxRadius, lerpSpeed;
+    float defaultRadius, maxRadius;
 
     public float radius;
     float angle;

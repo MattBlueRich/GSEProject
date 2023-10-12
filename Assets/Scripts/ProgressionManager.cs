@@ -24,6 +24,6 @@ public class ProgressionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerMovement.moveSpeed += Time.deltaTime * moveSpeedIncrementSize;
+        playerMovement.lerpSpeed += Time.deltaTime * moveSpeedIncrementSize;
     }
 }
