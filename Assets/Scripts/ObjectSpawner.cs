@@ -5,69 +5,55 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField]
-    private List<GameObject> illusions;
+    private List<GameObject> illusions; // List of the possible illusion prefabs that can spawn
     [SerializeField]
-    private List<GameObject> fortunes;
+    private List<GameObject> fortunes; // List of the possible fortune prefabs that can spawn
     [SerializeField]
-    private List<GameObject> spawnPoints;
+    private List<GameObject> spawnPoints; // List of the possible spawn points
 
     [SerializeField]
-    private int timeBetweenSpawns;
+    private int timeBetweenSpawns; // List of the possible spawn points
+
+    public List<GameObject> illusionsInGame; //List of the illusions currently in the game scene (dont edit in inspector)
+    public List<GameObject> fortunesInGame; //List of the fortunes currently in the game scene (dont edit in inspector)
 
     [SerializeField]
-    private int fallingVelocity = 1;
-
-    public List<GameObject> illusionsInGame;
-    public List<GameObject> fortunesInGame;
+    private float maxSize = 0.75f; // This is the maximum size an illusion can spawn as.
+    [SerializeField]
+    private float minSize = 1.25f; // This is the minimum size an illusion can spawn as.
 
 
 
 
     void Start()
     {
-        StartCoroutine(Spawner());
+        StartCoroutine(Spawner()); // Starts the coroutine to spawn entitys
     }
 
     void Update()
     {
-        if(illusionsInGame != null)
-        {
-            foreach (GameObject illusion in illusionsInGame)
-            {
-                if (illusion.GetComponent<Rigidbody2D>() != null)
-                {
-                    Rigidbody2D rb2D = illusion.GetComponent<Rigidbody2D>();
-                    rb2D.velocity = new Vector2(0, -fallingVelocity);
-                }
-            }
-        }
-        if (fortunesInGame != null)
-        {
-            foreach (GameObject fortune in fortunesInGame)
-            {
-                if (fortune.GetComponent<Rigidbody2D>() != null)
-                {
-                    Rigidbody2D rb2D = fortune.GetComponent<Rigidbody2D>();
-                    rb2D.velocity = new Vector2(0, -fallingVelocity);
-                }
-            }
-        }
+      
 
     }
 
 
     void SpawnIllusion()
     {
-        int illusionNumber = Random.Range(0, illusions.Count);
+        int illusionNumber = Random.Range(0, illusions.Count); // Chooses random illusion from list to spawn
         GameObject illusionObject = illusions[illusionNumber];
+        
+        float randomScale = Random.Range(minSize, maxSize); // Pick a random scale size for GameObject.
 
-       GameObject illusionInGame = Instantiate(illusionObject, RandomSpawnPoint().position, Quaternion.identity);
+        GameObject illusionInGame = Instantiate(illusionObject, RandomSpawnPoint().position, Quaternion.identity); // Spawns object at random spawn point
+        illusionInGame.transform.localScale = new Vector3(randomScale, randomScale, randomScale); // Gives object random scale
 
-        illusionsInGame.Add(illusionInGame);
+        illusionsInGame.Add(illusionInGame); // Adds illusion to list of illusions in game
     }
 
     void SpawnFortune()
     {
+        // Same thing with illusions but with fortunes
+
         int fortuneNumber = Random.Range(0, fortunes.Count);
         GameObject fortuneObject = fortunes[fortuneNumber];
 
@@ -79,6 +65,8 @@ public class ObjectSpawner : MonoBehaviour
 
     Transform RandomSpawnPoint()
     {
+        // Chooses random spawn point from list
+        
         int spawnPointNumber = Random.Range(0, spawnPoints.Count);
         GameObject spawnPointObj = spawnPoints[spawnPointNumber];
 
@@ -87,6 +75,8 @@ public class ObjectSpawner : MonoBehaviour
 
     IEnumerator Spawner()
     {
+        // Calls the function and waits in the right order
+
         SpawnIllusion();
         yield return new WaitForSeconds(timeBetweenSpawns);
         SpawnIllusion();
