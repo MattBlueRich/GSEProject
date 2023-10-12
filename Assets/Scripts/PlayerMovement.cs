@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    public float moveSpeed;
+
     [SerializeField]
-    float moveSpeed, defaultRadius, maxRadius;
+    float defaultRadius, maxRadius;
 
     public float radius;
     float angle;
