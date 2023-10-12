@@ -29,13 +29,15 @@ public class EntityPhysics : MonoBehaviour
                 objectSpawnerScript.illusionsInGame.Remove(gameObject); // Remove illusion from the list of illusions in game and destroys it
                 Destroy(gameObject);
             }
+
+            else if (isIllusion == false)
+            {
+                objectSpawnerScript.fortunesInGame.Remove(gameObject); // Remove fortune from the list of fortunes in game and destroys it
+                Destroy(gameObject);
+            }
         }
 
-        else if(isIllusion == false)
-        {
-            objectSpawnerScript.fortunesInGame.Remove(gameObject); // Remove fortune from the list of fortunes in game and destroys it
-            Destroy(gameObject);
-        }
+       
     }
 
     private void FixedUpdate()
