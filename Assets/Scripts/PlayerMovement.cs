@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
 
     [SerializeField]
-    float defaultRadius, maxRadius;
+    float defaultRadius, maxRadius, lerpSpeed;
 
     public float radius;
     float angle;
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            radius = Mathf.Lerp(radius, maxRadius, 1 * Time.deltaTime);
+            radius = Mathf.Lerp(radius, maxRadius, 1 * Time.deltaTime * lerpSpeed);
             keyPressed = true;
         }
       
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(radius != defaultRadius)
             {
-                radius = Mathf.Lerp(radius, defaultRadius, 1 * Time.deltaTime);
+                radius = Mathf.Lerp(radius, defaultRadius, 1 * Time.deltaTime * lerpSpeed);
 
             }
 

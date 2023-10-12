@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8451818266575701278}
   m_Layer: 0
   m_Name: ProgressionManager
-  m_TagString: Untagged
+  m_TagString: ProgressionManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
-  entityPhysics: {fileID: 0}
   moveSpeedIncrementSize: 0.1
-  entityFallIncrementSize: 0
+  entityFallIncrementSize: 0.2
+  timePerEntityFallIncrement: 10
+  entitySpeed: 1
