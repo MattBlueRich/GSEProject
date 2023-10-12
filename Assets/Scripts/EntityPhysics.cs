@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EntityPhysics : MonoBehaviour
 { 
-    [SerializeField]
-    private float moveSpeed = 1f; // How fast the enemies' move to start with
+    public float moveSpeed = 1f; // How fast the enemies' move to start with
 
     Rigidbody2D rb2D;
 
@@ -14,10 +13,13 @@ public class EntityPhysics : MonoBehaviour
     [SerializeField]
     private bool isIllusion;
 
+    private ProgressionManager progressionManager;
+
     void Start()
     {
         objectSpawnerScript = GameObject.Find("SpawnManager").GetComponent<ObjectSpawner>(); // Object needs to be called SpawnManager in scene to get the script
          rb2D = gameObject.GetComponent<Rigidbody2D>();
+        progressionManager = GameObject.FindGameObjectWithTag("ProgressionManager").GetComponent<ProgressionManager>();
     }
 
     void Update()
@@ -42,6 +44,9 @@ public class EntityPhysics : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb2D.velocity = new Vector2(0, -moveSpeed);
+
+        float speed = progressionManager.entitySpeed;
+
+        rb2D.velocity = new Vector2(0, -speed);
     }
 }
